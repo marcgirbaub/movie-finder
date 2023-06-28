@@ -13,8 +13,13 @@ module.exports = {
           "error",
           "interface",
         ],
-        "@typescript-eslint/naming-convention": ["error"],
+        "@typescript-eslint/naming-convention": ["off"],
       },
+    },
+
+    {
+      files: ["src/app/services/movies/movies.service.ts"],
+      rules: { "guard-for-in": "off" },
     },
   ],
   parserOptions: {

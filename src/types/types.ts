@@ -7,3 +7,17 @@ export interface Movie {
 }
 
 export type Movies = Movie[];
+
+export interface ApiMovie {
+  Title: string;
+  Year: string;
+  imdbID: string;
+  Type: string;
+  Poster: string;
+}
+
+export interface MoviesApiResponse {
+  totalResults: string;
+  Response: string;
+  Search: ApiMovie[];
+}
