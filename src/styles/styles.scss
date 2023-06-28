@@ -1,3 +1,5 @@
+@use "partials/variables";
+
 *,
 ::before,
 ::after {
@@ -7,6 +9,8 @@
 body {
   margin: 0;
   font-size: 1.25rem;
+  font-family: variables.$primary-font;
+  background-color: variables.$primary-color;
 }
 
 h1,
@@ -14,6 +18,7 @@ h2,
 h3 {
   margin: 0;
   font-weight: normal;
+  font-family: variables.$titles-font;
 }
 
 ul,
