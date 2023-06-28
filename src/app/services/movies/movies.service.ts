@@ -6,7 +6,7 @@ import {
   type ApiMovie,
   type Movie,
 } from "src/types/types";
-import { apiUrl, apikey } from "src/api/apiConstants";
+import { apiUrl, apikey } from "../../api/apiConstants";
 
 @Injectable({
   providedIn: "root",
