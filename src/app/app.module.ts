@@ -11,6 +11,7 @@ import { MoviesTableComponent } from "./components/movies-table/movies-table.com
 import { HeaderComponent } from "./components/header/header.component";
 import { StoreModule } from "@ngrx/store";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { MoviesModule } from "./store/movies/movies.module";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
     MaterialModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    MoviesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
