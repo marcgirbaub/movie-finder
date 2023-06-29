@@ -3,12 +3,13 @@ import { render, screen } from "@testing-library/angular";
 import "@testing-library/jest-dom";
 import { HomePageComponent } from "./home-page.component";
 import { MaterialModule } from "../../material/material.module";
+import { AppModule } from "../../app.module";
 
 describe("Given a HomePageComponent", () => {
   describe("When rendered", () => {
     const renderComponent = async () => {
       await render(HomePageComponent, {
-        imports: [HttpClientTestingModule, MaterialModule],
+        imports: [HttpClientTestingModule, MaterialModule, AppModule],
       });
     };
 

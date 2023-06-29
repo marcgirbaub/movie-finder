@@ -11,6 +11,11 @@ import { type ParsedMoviesApiResponse } from "src/types/types";
 export class HomePageComponent {
   searchValue: string;
   movies$: Observable<ParsedMoviesApiResponse>;
+  movies: ParsedMoviesApiResponse = {
+    totalResults: "",
+    response: "",
+    search: [],
+  };
 
   constructor(
     @Inject(MoviesService) private readonly moviesService: MoviesService
@@ -18,5 +23,9 @@ export class HomePageComponent {
 
   searchMovies(title: string): void {
     this.movies$ = this.moviesService.searchMovies(title);
+
+    this.movies$.subscribe((data) => {
+      this.movies = data;
+    });
   }
 }

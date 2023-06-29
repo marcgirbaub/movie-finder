@@ -1,0 +1,30 @@
+@use "../../../styles/partials/variables";
+
+.container {
+  max-width: 900px;
+}
+
+.table {
+  &__titles {
+    background-color: variables.$grey-color;
+  }
+
+  &__result {
+    &-image {
+      object-fit: cover;
+      margin-top: 5px;
+    }
+
+    &--center {
+      text-align: center;
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+
+    &--center {
+      text-align: center;
+    }
+  }
+}

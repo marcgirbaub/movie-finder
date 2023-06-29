@@ -16,7 +16,6 @@ import { type Observable } from "rxjs";
 })
 export class MoviesService {
   moviesUrl = apiUrl;
-  movies: ParsedMoviesApiResponse;
 
   constructor(@Inject(HttpClient) private readonly http: HttpClient) {}
 
@@ -33,10 +32,6 @@ export class MoviesService {
         }))
       );
 
-    movies$.subscribe((data: ParsedMoviesApiResponse) => {
-      this.movies = data;
-    });
-
     return movies$;
   }
 
@@ -46,7 +41,7 @@ export class MoviesService {
     apiMovies.forEach((movie) => {
       const convertedMovie: Movie = {
         title: movie.Title,
-        year: movie.Title,
+        year: movie.Year,
         imdbID: movie.imdbID,
         type: movie.Type,
         poster: movie.Poster,
