@@ -1,4 +1,4 @@
-@use "../../../../styles/partials/variables";
+@use "../../../styles/partials/variables";
 
 .search-form {
   min-width: 200px;
@@ -27,7 +27,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #dedede;
+    background-color: variables.$grey-color;
     height: 40px;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
