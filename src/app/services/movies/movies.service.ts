@@ -11,7 +11,10 @@ import {
 } from "src/types/types";
 import { apiUrl, apikey } from "../../api/apiConstants";
 import { type Observable } from "rxjs";
-import { addToFavourites } from "../../store/movies/movies.actions";
+import {
+  addToFavourites,
+  deleteFromFavourites,
+} from "../../store/movies/movies.actions";
 import {
   type FavouriteMovies,
   type FavMovie,
@@ -48,6 +51,10 @@ export class MoviesService {
 
   addToFavourites(movie: FavMovie): void {
     this.store.dispatch(addToFavourites({ payload: movie }));
+  }
+
+  deleteFromFavourites(movieId: string): void {
+    this.store.dispatch(deleteFromFavourites({ payload: movieId }));
   }
 
   getFavouriteMoviesState(): void {

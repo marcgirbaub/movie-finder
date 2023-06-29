@@ -27,4 +27,8 @@ export class MoviesTableComponent {
       (movie) => movie.imdbID === movieToCheck.imdbID
     );
   }
+
+  deleteFromFavourites(id: string): void {
+    this.moviesService.deleteFromFavourites(id);
+  }
 }
