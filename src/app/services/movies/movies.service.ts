@@ -1,5 +1,6 @@
 import { Inject, Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Store } from "@ngrx/store";
 import { map } from "rxjs/operators";
 import {
   type MoviesApiResponse,
@@ -10,14 +11,24 @@ import {
 } from "src/types/types";
 import { apiUrl, apikey } from "../../api/apiConstants";
 import { type Observable } from "rxjs";
+import { addToFavourites } from "../../store/movies/movies.actions";
+import {
+  type FavouriteMovies,
+  type FavMovie,
+} from "src/app/store/movies/types";
+import { selectMoviesState } from "../../store/movies/movies.reducer";
 
 @Injectable({
   providedIn: "root",
 })
 export class MoviesService {
   moviesUrl = apiUrl;
+  favouriteMovies: FavouriteMovies = [];
 
-  constructor(@Inject(HttpClient) private readonly http: HttpClient) {}
+  constructor(
+    @Inject(HttpClient) private readonly http: HttpClient,
+    @Inject(Store) private readonly store: Store
+  ) {}
 
   searchMovies(title: string): Observable<ParsedMoviesApiResponse> {
     const movies$ = this.http
@@ -33,6 +44,16 @@ export class MoviesService {
       );
 
     return movies$;
+  }
+
+  addToFavourites(movie: FavMovie): void {
+    this.store.dispatch(addToFavourites({ payload: movie }));
+  }
+
+  getFavouriteMoviesState(): void {
+    this.store.select(selectMoviesState).subscribe((favouriteMovies) => {
+      this.favouriteMovies = favouriteMovies;
+    });
   }
 
   convertPropertiesToLowercase(apiMovies: ApiMovie[]): Movies {
