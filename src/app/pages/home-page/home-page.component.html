@@ -1,0 +1,7 @@
+<form class="search-form" (ngSubmit)="searchMovies(searchValue)">
+  <input class="search-form__input" [(ngModel)]="searchValue" name="searchValue" placeholder="Search" type="search"
+    autocapitalize="off" maxlength="70">
+  <button class="search-form__button" type="submit">
+    <mat-icon class="search-form__icon" fontIcon="search"></mat-icon>
+  </button>
+</form>

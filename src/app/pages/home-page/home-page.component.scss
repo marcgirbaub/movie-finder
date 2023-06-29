@@ -1,0 +1,39 @@
+@use "../../../../styles/partials/variables";
+
+.search-form {
+  min-width: 200px;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__input {
+    padding: 5px 10px;
+    border: 1px solid variables.$accent-color;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    position: relative;
+    height: 40px;
+    width: 100%;
+
+    &:focus {
+      outline: 1.5px solid variables.$accent-color;
+      z-index: 1;
+    }
+  }
+
+  &__button {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dedede;
+    height: 40px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+
+  &__icon {
+    font-size: 1.5rem;
+  }
+}

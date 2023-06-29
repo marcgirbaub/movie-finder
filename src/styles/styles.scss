@@ -1,5 +1,10 @@
 @use "partials/variables";
 
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "../../node_modules/@fontsource/roboto/index.css";
+@import "../../node_modules/@fontsource/reem-kufi/index.css";
+@import "~material-icons/iconfont/material-icons.css";
+
 *,
 ::before,
 ::after {
@@ -8,7 +13,7 @@
 
 body {
   margin: 0;
-  font-size: 1.25rem;
+  padding: 20px;
   font-family: variables.$primary-font;
   background-color: variables.$primary-color;
 }
@@ -34,6 +39,8 @@ input {
   font-family: inherit;
   font-size: inherit;
   border: none;
+  background-color: transparent;
+  outline: none;
 }
 
 button {

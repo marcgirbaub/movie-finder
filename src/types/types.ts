@@ -21,3 +21,9 @@ export interface MoviesApiResponse {
   Response: string;
   Search: ApiMovie[];
 }
+
+export interface ParsedMoviesApiResponse {
+  totalResults: string;
+  response: string;
+  search: Movies;
+}
