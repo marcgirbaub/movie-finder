@@ -7,16 +7,19 @@ import {
 import { TestBed } from "@angular/core/testing";
 import { apikey } from "../../api/apiConstants";
 import { Observable } from "rxjs";
+import { Store } from "@ngrx/store";
+import { createMockStore } from "../../spec/mockStore";
 
 describe("Given a Movies Service", () => {
   let moviesService: MoviesService;
   let httpMock: HttpTestingController;
   let httpClient: HttpClient;
+  const store = createMockStore();
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [MoviesService],
+      providers: [MoviesService, { provide: Store, useValue: store }],
     });
 
     moviesService = TestBed.inject(MoviesService);
