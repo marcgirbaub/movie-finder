@@ -11,6 +11,7 @@ import { type ParsedMoviesApiResponse } from "src/types/types";
 export class HomePageComponent {
   searchValue: string;
   movies$: Observable<ParsedMoviesApiResponse>;
+  isLoading = false;
   movies: ParsedMoviesApiResponse = {
     totalResults: "",
     response: "",
@@ -22,10 +23,12 @@ export class HomePageComponent {
   ) {}
 
   searchMovies(title: string): void {
+    this.isLoading = true;
     this.movies$ = this.moviesService.searchMovies(title);
 
     this.movies$.subscribe((data) => {
       this.movies = data;
+      this.isLoading = false;
     });
   }
 }
