@@ -27,6 +27,9 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table__columns"></tr>
   </table>
 </div>
+<div *ngIf="movies.length == 0 && !isLoading" class="placeholder-text">
+  <span>Search to see movie results</span>
+</div>
 <div *ngIf="isLoading" class="loader-container">
   <mat-spinner [diameter]="50"></mat-spinner>
 </div>

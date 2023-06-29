@@ -1,9 +1,5 @@
 @use "../../../styles/partials/variables";
 
-.container {
-  max-width: 900px;
-}
-
 .table {
   &__titles {
     background-color: variables.$grey-color;
@@ -33,4 +29,10 @@
   display: flex;
   justify-content: center;
   margin-top: 60px;
+}
+
+.placeholder-text {
+  text-align: center;
+  margin-top: 60px;
+  font-style: italic;
 }
