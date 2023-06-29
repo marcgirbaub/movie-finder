@@ -8,5 +8,6 @@ import { type Movies } from "src/types/types";
 })
 export class MoviesTableComponent {
   @Input() movies: Movies;
+  @Input() isLoading: boolean;
   displayedColumns: string[] = ["poster", "title", "year", "type"];
 }
