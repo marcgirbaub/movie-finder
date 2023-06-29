@@ -13,7 +13,7 @@
 
 body {
   margin: 0;
-  padding: 20px 40px;
+  padding: 60px 40px 40px;
   font-family: variables.$primary-font;
   background-color: variables.$primary-color;
 
@@ -57,4 +57,5 @@ a:active,
 a:visited {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }

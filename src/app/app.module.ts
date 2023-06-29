@@ -8,9 +8,15 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material/material.module";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
 import { MoviesTableComponent } from "./components/movies-table/movies-table.component";
+import { HeaderComponent } from "./components/header/header.component";
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, MoviesTableComponent],
+  declarations: [
+    AppComponent,
+    HomePageComponent,
+    MoviesTableComponent,
+    HeaderComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
