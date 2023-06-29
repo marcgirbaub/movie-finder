@@ -12,13 +12,18 @@ import {
 import { apiUrl, apikey } from "../../api/apiConstants";
 import { type Observable } from "rxjs";
 import { addToFavourites } from "src/app/store/movies/movies.actions";
-import { type FavMovie } from "src/app/store/movies/types";
+import {
+  type FavouriteMovies,
+  type FavMovie,
+} from "src/app/store/movies/types";
+import { selectMoviesState } from "src/app/store/movies/movies.reducer";
 
 @Injectable({
   providedIn: "root",
 })
 export class MoviesService {
   moviesUrl = apiUrl;
+  favouriteMovies: FavouriteMovies = [];
 
   constructor(
     @Inject(HttpClient) private readonly http: HttpClient,
@@ -43,6 +48,12 @@ export class MoviesService {
 
   addToFavourites(movie: FavMovie): void {
     this.store.dispatch(addToFavourites({ payload: movie }));
+  }
+
+  getFavouriteMoviesState(): void {
+    this.store.select(selectMoviesState).subscribe((favouriteMovies) => {
+      this.favouriteMovies = favouriteMovies;
+    });
   }
 
   convertPropertiesToLowercase(apiMovies: ApiMovie[]): Movies {
