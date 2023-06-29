@@ -1,5 +1,6 @@
 import { Inject, Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Store } from "@ngrx/store";
 import { map } from "rxjs/operators";
 import {
   type MoviesApiResponse,
@@ -10,6 +11,8 @@ import {
 } from "src/types/types";
 import { apiUrl, apikey } from "../../api/apiConstants";
 import { type Observable } from "rxjs";
+import { addToFavourites } from "src/app/store/movies/movies.actions";
+import { type FavMovie } from "src/app/store/movies/types";
 
 @Injectable({
   providedIn: "root",
@@ -17,7 +20,10 @@ import { type Observable } from "rxjs";
 export class MoviesService {
   moviesUrl = apiUrl;
 
-  constructor(@Inject(HttpClient) private readonly http: HttpClient) {}
+  constructor(
+    @Inject(HttpClient) private readonly http: HttpClient,
+    @Inject(Store) private readonly store: Store
+  ) {}
 
   searchMovies(title: string): Observable<ParsedMoviesApiResponse> {
     const movies$ = this.http
@@ -33,6 +39,10 @@ export class MoviesService {
       );
 
     return movies$;
+  }
+
+  addToFavourites(movie: FavMovie): void {
+    this.store.dispatch(addToFavourites({ payload: movie }));
   }
 
   convertPropertiesToLowercase(apiMovies: ApiMovie[]): Movies {
