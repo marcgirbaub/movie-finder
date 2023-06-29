@@ -1,8 +1,13 @@
 @use "../../../styles/partials/variables";
 
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-bottom: 40px;
+}
+
 .search-form {
-  min-width: 200px;
-  max-width: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +19,8 @@
     border-bottom-left-radius: 6px;
     position: relative;
     height: 40px;
-    width: 100%;
+    min-width: 200px;
+    width: 400px;
 
     &:focus {
       outline: 1.5px solid variables.$accent-color;

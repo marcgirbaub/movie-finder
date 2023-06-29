@@ -1,8 +1,10 @@
-<form class="search-form" (ngSubmit)="searchMovies(searchValue)">
-  <input class="search-form__input" [(ngModel)]="searchValue" name="searchValue" placeholder="Search" type="search"
-    autocapitalize="off" maxlength="70">
-  <button class="search-form__button" type="submit" [disabled]="!searchValue">
-    <mat-icon class="search-form__icon" fontIcon="search"></mat-icon>
-  </button>
-</form>
-<app-movies-table [movies]="movies.search" [isLoading]="isLoading"></app-movies-table>
+<main class="main-content">
+  <form class="search-form" (ngSubmit)="searchMovies(searchValue)">
+    <input class="search-form__input" [(ngModel)]="searchValue" name="searchValue" placeholder="Search" type="search"
+      autocapitalize="off" maxlength="70">
+    <button class="search-form__button" type="submit" [disabled]="!searchValue">
+      <mat-icon class="search-form__icon" fontIcon="search"></mat-icon>
+    </button>
+  </form>
+  <app-movies-table [movies]="movies.search" [isLoading]="isLoading"></app-movies-table>
+</main>

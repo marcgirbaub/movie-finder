@@ -1,4 +1,4 @@
-<div class="container">
+<div class="table-content">
   <table mat-table [dataSource]="movies" class="mat-elevation-z8 table">
     <ng-container matColumnDef="poster">
       <th mat-header-cell *matHeaderCellDef class="table__title table__title--center"> Poster </th>
@@ -26,10 +26,11 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table__titles"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table__columns"></tr>
   </table>
-</div>
-<div *ngIf="movies.length == 0 && !isLoading" class="placeholder-text">
-  <span>Search to see movie results</span>
-</div>
-<div *ngIf="isLoading" class="loader-container">
-  <mat-spinner [diameter]="50"></mat-spinner>
+
+  <div *ngIf="movies.length == 0 && !isLoading" class="placeholder-text">
+    <span>Search to see movie results</span>
+  </div>
+  <div *ngIf="isLoading" class="loader-container">
+    <mat-spinner [diameter]="50"></mat-spinner>
+  </div>
 </div>
