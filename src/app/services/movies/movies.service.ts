@@ -1,36 +1,38 @@
 import { Inject, Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { map } from "rxjs/operators";
 import {
   type MoviesApiResponse,
   type Movies,
   type ApiMovie,
   type Movie,
+  type ParsedMoviesApiResponse,
 } from "src/types/types";
 import { apiUrl, apikey } from "../../api/apiConstants";
+import { type Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class MoviesService {
-  movies: Movies;
   moviesUrl = apiUrl;
 
   constructor(@Inject(HttpClient) private readonly http: HttpClient) {}
 
-  searchMovies(title: string) {
-    const movies$ = this.http.get<MoviesApiResponse>(this.moviesUrl, {
-      params: { apikey, s: title },
-    });
+  searchMovies(title: string): Observable<ParsedMoviesApiResponse> {
+    const movies$ = this.http
+      .get<MoviesApiResponse>(this.moviesUrl, {
+        params: { apikey, s: title },
+      })
+      .pipe(
+        map(({ Response, Search, totalResults }) => ({
+          search: this.convertPropertiesToLowercase(Search),
+          response: Response,
+          totalResults,
+        }))
+      );
 
-    movies$.subscribe((data) => {
-      const parsedResponse = {
-        search: this.convertPropertiesToLowercase(data.Search),
-        response: data.Response,
-        totalResults: data.totalResults,
-      };
-
-      this.movies = parsedResponse.search;
-    });
+    return movies$;
   }
 
   convertPropertiesToLowercase(apiMovies: ApiMovie[]): Movies {
