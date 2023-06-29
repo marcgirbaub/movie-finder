@@ -49,3 +49,23 @@
   margin-top: 60px;
   font-style: italic;
 }
+
+.fav {
+  &__button {
+    width: 100%;
+
+    &:hover .fav__icon {
+      font-size: 34px;
+    }
+  }
+
+  &__icon {
+    color: variables.$accent-color;
+    font-size: 30px;
+  }
+}
+
+.mat-icon {
+  width: 34px;
+  height: 34px;
+}

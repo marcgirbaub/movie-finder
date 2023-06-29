@@ -23,6 +23,13 @@
       </td>
     </ng-container>
 
+    <ng-container matColumnDef="fav">
+      <th mat-header-cell *matHeaderCellDef class="table__title table__title--center"> </th>
+      <td mat-cell *matCellDef="let movie" class="table__result table__result--center"> <button class="fav__button"
+          (click)="addToFavourites(movie)"><mat-icon class="fav__icon">favorite_border</mat-icon></button>
+      </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table__titles"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table__columns"></tr>
   </table>
