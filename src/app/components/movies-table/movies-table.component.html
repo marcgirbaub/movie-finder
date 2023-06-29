@@ -27,3 +27,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table__columns"></tr>
   </table>
 </div>
+<div *ngIf="isLoading" class="loader-container">
+  <mat-spinner [diameter]="50"></mat-spinner>
+</div>
