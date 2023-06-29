@@ -1,7 +1,7 @@
 import { Component, Inject } from "@angular/core";
 import { type Observable } from "rxjs";
-import { MoviesService } from "src/app/services/movies/movies.service";
-import { type ParsedMoviesApiResponse, type Movies } from "src/types/types";
+import { MoviesService } from "../../services/movies/movies.service";
+import { type ParsedMoviesApiResponse } from "src/types/types";
 
 @Component({
   selector: "app-home-page",

@@ -6,7 +6,7 @@ import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material/material.module";
-import { HomePageComponent } from "./pages/home-page/home-page/home-page.component";
+import { HomePageComponent } from "./pages/home-page/home-page.component";
 
 @NgModule({
   declarations: [AppComponent, HomePageComponent],

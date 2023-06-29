@@ -1,4 +1,4 @@
-import { type HttpClient } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { MoviesService } from "./movies.service";
 import {
   HttpClientTestingModule,
@@ -20,6 +20,7 @@ describe("Given a Movies Service", () => {
 
     moviesServie = TestBed.inject(MoviesService);
     httpMock = TestBed.inject(HttpTestingController);
+    httpClient = TestBed.inject(HttpClient);
   });
 
   afterEach(() => {
