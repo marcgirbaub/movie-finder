@@ -1,8 +1,20 @@
 @use "../../../styles/partials/variables";
 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .table {
+  &-content {
+    width: 100%;
+    max-width: 1200px;
+  }
+
   &__titles {
-    background-color: variables.$grey-color;
+    background-color: variables.$accent-color;
   }
 
   &__result {
@@ -18,6 +30,7 @@
 
   &__title {
     font-weight: bold;
+    color: #fff;
 
     &--center {
       text-align: center;
