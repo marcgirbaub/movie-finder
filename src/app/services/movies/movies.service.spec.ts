@@ -6,9 +6,10 @@ import {
 } from "@angular/common/http/testing";
 import { TestBed } from "@angular/core/testing";
 import { apikey } from "../../api/apiConstants";
+import { Observable } from "rxjs";
 
 describe("Given a Movies Service", () => {
-  let moviesServie: MoviesService;
+  let moviesService: MoviesService;
   let httpMock: HttpTestingController;
   let httpClient: HttpClient;
 
@@ -18,7 +19,7 @@ describe("Given a Movies Service", () => {
       providers: [MoviesService],
     });
 
-    moviesServie = TestBed.inject(MoviesService);
+    moviesService = TestBed.inject(MoviesService);
     httpMock = TestBed.inject(HttpTestingController);
     httpClient = TestBed.inject(HttpClient);
   });
@@ -26,17 +27,22 @@ describe("Given a Movies Service", () => {
   afterEach(() => {
     httpMock.verify();
   });
+  const searchTitle = "batman";
 
   describe("When its searchMovies method is called with the title `batman`", () => {
-    test("Then it should make a GET request to the search endpoint", () => {
-      const searchTitle = "batman";
-
-      moviesServie.searchMovies(searchTitle);
+    test("Then it should make a GET request to the search endpoint when subscribing to this method", () => {
+      moviesService.searchMovies(searchTitle).subscribe();
       const req = httpMock.expectOne(
-        `${moviesServie.moviesUrl}?apikey=${apikey}&s=${searchTitle}`
+        `${moviesService.moviesUrl}?apikey=${apikey}&s=${searchTitle}`
       );
 
       expect(req.request.method).toEqual("GET");
     });
+  });
+
+  test("Then it should return an Observable", () => {
+    const observableReturned = moviesService.searchMovies(searchTitle);
+
+    expect(observableReturned).toBeInstanceOf(Observable);
   });
 });
