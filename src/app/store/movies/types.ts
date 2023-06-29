@@ -1,8 +1,6 @@
-export interface FavMovie {
-  title: string;
-  year: string;
-  poster: string;
-  type: string;
+import { type Movie } from "src/types/types";
+
+export interface FavMovie extends Movie {
   description?: string;
 }
 
