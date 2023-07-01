@@ -1,6 +1,7 @@
 import { Component, Inject, Input } from "@angular/core";
 import { MoviesService } from "../../services/movies/movies.service";
 import { type Movie, type Movies } from "../../../types/types";
+import { type FavouriteMovies } from "src/app/store/movies/types";
 
 @Component({
   selector: "app-movies-table",
@@ -10,6 +11,7 @@ import { type Movie, type Movies } from "../../../types/types";
 export class MoviesTableComponent {
   @Input() movies: Movies;
   @Input() isLoading: boolean;
+  favouriteMovies: FavouriteMovies;
   displayedColumns: string[] = ["poster", "title", "year", "type", "fav"];
 
   constructor(
@@ -20,10 +22,15 @@ export class MoviesTableComponent {
     this.moviesService.addToFavourites(movie);
   }
 
-  checkIfMovieIsFavourite(movieToCheck: Movie): boolean {
-    this.moviesService.getFavouriteMoviesState();
+  getFavouriteMovies() {
+    this.moviesService.getFavouriteMoviesState().subscribe((data) => {
+      this.favouriteMovies = data;
+    });
+  }
 
-    return this.moviesService.favouriteMovies.some(
+  checkIfMovieIsFavourite(movieToCheck: Movie): boolean {
+    this.getFavouriteMovies();
+    return this.favouriteMovies.some(
       (movie) => movie.imdbID === movieToCheck.imdbID
     );
   }

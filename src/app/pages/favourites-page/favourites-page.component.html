@@ -1,0 +1,5 @@
+<main class="main-content">
+  <ul class="movies" *ngIf="favouriteMovies.length > 0">
+    <li *ngFor="let movie of favouriteMovies"><app-movie [movie]="movie"></app-movie></li>
+  </ul>
+</main>
