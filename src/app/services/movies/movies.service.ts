@@ -8,17 +8,14 @@ import {
   type ApiMovie,
   type Movie,
   type ParsedMoviesApiResponse,
-} from "src/types/types";
+} from "../../../types/types";
 import { apiUrl, apikey } from "../../api/apiConstants";
 import { type Observable } from "rxjs";
 import {
   addToFavourites,
   deleteFromFavourites,
 } from "../../store/movies/movies.actions";
-import {
-  type FavouriteMovies,
-  type FavMovie,
-} from "src/app/store/movies/types";
+import { type FavouriteMovies, type FavMovie } from "../../store/movies/types";
 import { selectMoviesState } from "../../store/movies/movies.reducer";
 
 @Injectable({
@@ -57,10 +54,8 @@ export class MoviesService {
     this.store.dispatch(deleteFromFavourites({ payload: movieId }));
   }
 
-  getFavouriteMoviesState(): void {
-    this.store.select(selectMoviesState).subscribe((favouriteMovies) => {
-      this.favouriteMovies = favouriteMovies;
-    });
+  getFavouriteMoviesState() {
+    return this.store.select(selectMoviesState);
   }
 
   convertPropertiesToLowercase(apiMovies: ApiMovie[]): Movies {
