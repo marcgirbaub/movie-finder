@@ -33,15 +33,21 @@
     font-size: 34px;
   }
 
-  &__info {
+  &__container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    justify-content: space-between;
     width: 100%;
 
     @media (max-width: 600px) {
       gap: 10px;
     }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 }
 

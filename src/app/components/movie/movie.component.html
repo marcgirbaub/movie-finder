@@ -1,14 +1,18 @@
 <article class="movie">
   <img src="{{movie.poster}}" class="movie__image" width="225" height="350" alt="{{movie.title}} poster">
-  <div class="movie__info">
-    <h2 class="movie__title">{{movie.title}}</h2>
-    <span class="movie__year">Year: {{movie.year}}</span>
-    <span class="movie__type">Type: {{movie.type}}</span>
-    <div>
-      <span>Description:</span>
-      <p *ngIf="movie.description" class="movie__description">{{movie.description}}</p>
+  <div class="movie__container">
+    <div class="movie__info">
+      <h2 class="movie__title">{{movie.title}}</h2>
+      <span class="movie__year">Year: {{movie.year}}</span>
+      <span class="movie__type">Type: {{movie.type}}</span>
+      <div>
+        <span>Description:</span>
+        <p *ngIf="movie.description" class="movie__description">{{movie.description}}</p>
+      </div>
     </div>
-    <button class="movie__button" (click)="deleteFromFavourites()"><mat-icon
-        class="movie__fav-icon">favorite</mat-icon></button>
+    <div class="movie__controls">
+      <button class="movie__button" (click)="deleteFromFavourites()"><mat-icon
+          class="movie__fav-icon">favorite</mat-icon></button>
+    </div>
   </div>
 </article>
