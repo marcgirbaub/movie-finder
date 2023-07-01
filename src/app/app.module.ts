@@ -12,6 +12,7 @@ import { HeaderComponent } from "./components/header/header.component";
 import { StoreModule } from "@ngrx/store";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { MoviesModule } from "./store/movies/movies.module";
+import { MovieComponent } from "./components/movie/movie.component";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MoviesModule } from "./store/movies/movies.module";
     HomePageComponent,
     MoviesTableComponent,
     HeaderComponent,
+    MovieComponent,
   ],
   imports: [
     BrowserModule,
