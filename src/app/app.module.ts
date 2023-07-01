@@ -13,6 +13,7 @@ import { StoreModule } from "@ngrx/store";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { MoviesModule } from "./store/movies/movies.module";
 import { MovieComponent } from "./components/movie/movie.component";
+import { FavouritesPageComponent } from "./pages/favourites-page/favourites-page.component";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MovieComponent } from "./components/movie/movie.component";
     MoviesTableComponent,
     HeaderComponent,
     MovieComponent,
+    FavouritesPageComponent,
   ],
   imports: [
     BrowserModule,
