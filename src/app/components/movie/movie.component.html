@@ -8,6 +8,7 @@
       <span>Description:</span>
       <p *ngIf="movie.description" class="movie__description">{{movie.description}}</p>
     </div>
-    <button class="movie__button"><mat-icon class="movie__fav-icon">favorite</mat-icon></button>
+    <button class="movie__button" (click)="deleteFromFavourites()"><mat-icon
+        class="movie__fav-icon">favorite</mat-icon></button>
   </div>
 </article>
