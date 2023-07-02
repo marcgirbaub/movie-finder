@@ -13,5 +13,5 @@ export const deleteFromFavourites = createAction(
 
 export const modifyDescription = createAction(
   "[Movies] Modify Description",
-  props<{ payload: string }>()
+  props<{ payload: { id: string; description: string } }>()
 );
