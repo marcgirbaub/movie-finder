@@ -1,4 +1,5 @@
 import { Component, Inject } from "@angular/core";
+import { FormControl } from "@angular/forms";
 import { Store } from "@ngrx/store";
 import { type Observable } from "rxjs";
 import { MoviesService } from "../../services/movies/movies.service";
@@ -12,6 +13,11 @@ import { type FavouriteMovies } from "../../store/movies/types";
 export class FavouritesPageComponent {
   favouriteMovies: FavouriteMovies = [];
   favouriteMovies$: Observable<FavouriteMovies>;
+  filteredMovies: FavouriteMovies = [];
+  filteredMessage = "";
+  types = new FormControl("");
+  typesList: string[] = ["movie", "game", "series"];
+  year: number;
 
   constructor(
     @Inject(MoviesService) private readonly moviesService: MoviesService,
@@ -29,5 +35,46 @@ export class FavouritesPageComponent {
     movies.subscribe((data) => {
       this.favouriteMovies = data;
     });
+  }
+
+  filterMovies(types?: FormControl, year?: number): void {
+    const selectedTypes = types?.value as string[];
+    this.filteredMessage = "";
+    this.filteredMovies = [];
+    let filteredMovies: FavouriteMovies = [];
+
+    if (types?.value.length > 0 && year) {
+      filteredMovies = this.favouriteMovies.filter(
+        (movie) =>
+          selectedTypes.includes(movie.type) && movie.year === year.toString()
+      );
+    }
+
+    if (!year) {
+      filteredMovies = this.favouriteMovies.filter((movie) =>
+        selectedTypes.includes(movie.type)
+      );
+    }
+
+    if (year && types?.value.length === 0) {
+      filteredMovies = this.favouriteMovies.filter(
+        (movie) => movie.year === year?.toString()
+      );
+    }
+
+    if (filteredMovies.length === 0) {
+      this.filteredMessage = "No movies found with these parameters";
+
+      return;
+    }
+
+    this.filteredMovies = filteredMovies;
+  }
+
+  resetFilters(): void {
+    this.filteredMessage = "";
+    this.filteredMovies = [];
+    this.types = new FormControl("");
+    this.year = Number("");
   }
 }

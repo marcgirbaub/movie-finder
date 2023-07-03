@@ -39,5 +39,6 @@ module.exports = {
         ],
       },
     ],
+    "no-negated-condition": "off",
   },
 };
