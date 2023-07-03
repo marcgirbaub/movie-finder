@@ -17,6 +17,7 @@ export class FavouritesPageComponent {
   filteredMessage = "";
   types = new FormControl("");
   typesList: string[] = ["movie", "game", "series"];
+  year: number;
 
   constructor(
     @Inject(MoviesService) private readonly moviesService: MoviesService,
@@ -36,14 +37,30 @@ export class FavouritesPageComponent {
     });
   }
 
-  filterMovies(types: FormControl): void {
-    const selectedTypes = types.value as string[];
+  filterMovies(types?: FormControl, year?: number): void {
+    const selectedTypes = types?.value as string[];
     this.filteredMessage = "";
     this.filteredMovies = [];
+    let filteredMovies: FavouriteMovies = [];
 
-    const filteredMovies = this.favouriteMovies.filter((movie) =>
-      selectedTypes.includes(movie.type)
-    );
+    if (types?.value.length > 0 && year) {
+      filteredMovies = this.favouriteMovies.filter(
+        (movie) =>
+          selectedTypes.includes(movie.type) && movie.year === year.toString()
+      );
+    }
+
+    if (!year) {
+      filteredMovies = this.favouriteMovies.filter((movie) =>
+        selectedTypes.includes(movie.type)
+      );
+    }
+
+    if (year && types?.value.length === 0) {
+      filteredMovies = this.favouriteMovies.filter(
+        (movie) => movie.year === year?.toString()
+      );
+    }
 
     if (filteredMovies.length === 0) {
       this.filteredMessage = "No movies found with these parameters";
@@ -52,5 +69,12 @@ export class FavouritesPageComponent {
     }
 
     this.filteredMovies = filteredMovies;
+  }
+
+  resetFilters(): void {
+    this.filteredMessage = "";
+    this.filteredMovies = [];
+    this.types = new FormControl("");
+    this.year = Number("");
   }
 }
