@@ -3,16 +3,20 @@
   <div class="movie__container">
     <div class="movie__info">
       <h2 class="movie__title">{{movie.title}}</h2>
-      <span class="movie__year">Year: {{movie.year}}</span>
-      <span class="movie__type">Type: {{movie.type}}</span>
+      <span class="movie__year"><span class="movie__info-span">Year:</span> {{movie.year}}</span>
+      <span class="movie__type"><span class="movie__info-span">Type:</span> {{movie.type}}</span>
       <div>
-        <span>Description:</span>
+        <span class="movie__info-span">Description:</span>
+        <span *ngIf="!movie.description" class="movie__no-description"> No description added</span>
         <p *ngIf="movie.description" class="movie__description">{{movie.description}}</p>
       </div>
     </div>
-    <div class="movie__controls">
-      <button class="movie__button" (click)="deleteFromFavourites()"><mat-icon
-          class="movie__fav-icon">favorite</mat-icon></button>
+    <div class="movie__controls controls">
+      <button class="controls__edit" (click)="openDialog()"><mat-icon
+          class="controls__edit-icon">edit</mat-icon></button>
+      <button class="controls__unfav" (click)="deleteFromFavourites()"><mat-icon
+          class="controls__unfav-icon">favorite</mat-icon></button>
+
     </div>
   </div>
 </article>

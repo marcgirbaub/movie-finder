@@ -72,7 +72,10 @@ export class MoviesService {
         year: movie.Year,
         imdbID: movie.imdbID,
         type: movie.Type,
-        poster: movie.Poster,
+        poster:
+          movie.Poster === "N/A"
+            ? "https://womens-southerngolfassociation.org/wp-content/uploads/2021/10/Image-Not-Available.png"
+            : movie.Poster,
       };
 
       convertedApiMovies.push(convertedMovie);

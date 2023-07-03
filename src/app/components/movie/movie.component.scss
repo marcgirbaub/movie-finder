@@ -13,6 +13,10 @@
     align-items: center;
   }
 
+  &__title {
+    font-size: 1.2rem;
+  }
+
   &__image {
     object-fit: cover;
 
@@ -20,17 +24,6 @@
       width: 100%;
       height: 100%;
     }
-  }
-
-  &__button {
-    &:hover .movie__fav-icon {
-      font-size: 38px;
-    }
-  }
-
-  &__fav-icon {
-    color: variables.$accent-color;
-    font-size: 34px;
   }
 
   &__container {
@@ -44,10 +37,48 @@
     }
   }
 
+  &__description {
+    word-break: break-word;
+    margin: 4px 0px;
+  }
+
   &__info {
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    &-span {
+      font-weight: bold;
+    }
+  }
+
+  &__no-description {
+    font-style: italic;
+  }
+}
+.controls {
+  display: flex;
+  justify-content: space-around;
+
+  &__unfav {
+    &-icon {
+      color: variables.$accent-color;
+      font-size: 34px;
+    }
+
+    &:hover .controls__unfav-icon {
+      font-size: 38px;
+    }
+  }
+
+  &__edit {
+    &-icon {
+      font-size: 34px;
+    }
+
+    &:hover .controls__edit-icon {
+      font-size: 38px;
+    }
   }
 }
 
