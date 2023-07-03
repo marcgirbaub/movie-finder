@@ -14,6 +14,7 @@ import { type Observable } from "rxjs";
 import {
   addToFavourites,
   deleteFromFavourites,
+  modifyDescription,
 } from "../../store/movies/movies.actions";
 import { type FavouriteMovies, type FavMovie } from "../../store/movies/types";
 import { selectMoviesState } from "../../store/movies/movies.reducer";
@@ -56,6 +57,10 @@ export class MoviesService {
 
   getFavouriteMoviesState() {
     return this.store.select(selectMoviesState);
+  }
+
+  modifyDescription(id: string, description: string): void {
+    this.store.dispatch(modifyDescription({ payload: { id, description } }));
   }
 
   convertPropertiesToLowercase(apiMovies: ApiMovie[]): Movies {

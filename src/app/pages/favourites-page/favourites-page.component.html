@@ -1,4 +1,5 @@
 <main class="main-content">
+  <span *ngIf="favouriteMovies.length === 0" class="info-span">No favourite movies added</span>
   <ul class="movies" *ngIf="favouriteMovies.length > 0">
     <li *ngFor="let movie of favouriteMovies"><app-movie [movie]="movie"></app-movie></li>
   </ul>
