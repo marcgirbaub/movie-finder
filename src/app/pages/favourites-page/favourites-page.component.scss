@@ -1,6 +1,6 @@
 .movies {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
   gap: 40px;
 
   @media (max-width: 600px) {
@@ -15,4 +15,9 @@
   flex-direction: column;
   gap: 40px;
   padding-top: 40px;
+}
+
+.info-span {
+  font-style: italic;
+  text-align: center;
 }

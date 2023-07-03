@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Description</h1>
+<div mat-dialog-content>
+  <mat-form-field class="dialog__field">
+    <textarea matInput [(ngModel)]="data.description" placeholder="enter description" class="dialog__input"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="dialog__controls controls">
+  <button mat-button [mat-dialog-close]="" class="controls__delete">delete</button>
+  <button mat-button [mat-dialog-close]="data.description" cdkFocusInitial class="controls__add">add</button>
+</div>

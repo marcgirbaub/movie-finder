@@ -1,0 +1,37 @@
+@use "../../../styles/partials/variables";
+
+.dialog {
+  &__controls {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__field {
+    width: 400px;
+  }
+}
+
+.controls {
+  padding-bottom: 24px;
+
+  &__add {
+    padding: 6px 6px;
+    background-color: variables.$accent-color;
+    color: #fff;
+    border-radius: 6px;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__delete {
+    padding: 6px 6px;
+    border-radius: 6px;
+    background-color: variables.$grey-color;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

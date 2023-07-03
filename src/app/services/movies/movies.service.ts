@@ -14,6 +14,7 @@ import { type Observable } from "rxjs";
 import {
   addToFavourites,
   deleteFromFavourites,
+  modifyDescription,
 } from "../../store/movies/movies.actions";
 import { type FavouriteMovies, type FavMovie } from "../../store/movies/types";
 import { selectMoviesState } from "../../store/movies/movies.reducer";
@@ -58,6 +59,10 @@ export class MoviesService {
     return this.store.select(selectMoviesState);
   }
 
+  modifyDescription(id: string, description: string): void {
+    this.store.dispatch(modifyDescription({ payload: { id, description } }));
+  }
+
   convertPropertiesToLowercase(apiMovies: ApiMovie[]): Movies {
     const convertedApiMovies: Movies = [];
 
@@ -67,7 +72,10 @@ export class MoviesService {
         year: movie.Year,
         imdbID: movie.imdbID,
         type: movie.Type,
-        poster: movie.Poster,
+        poster:
+          movie.Poster === "N/A"
+            ? "https://womens-southerngolfassociation.org/wp-content/uploads/2021/10/Image-Not-Available.png"
+            : movie.Poster,
       };
 
       convertedApiMovies.push(convertedMovie);

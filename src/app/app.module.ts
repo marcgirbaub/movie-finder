@@ -14,6 +14,7 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { MoviesModule } from "./store/movies/movies.module";
 import { MovieComponent } from "./components/movie/movie.component";
 import { FavouritesPageComponent } from "./pages/favourites-page/favourites-page.component";
+import { DialogComponent } from "./components/dialog/dialog.component";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FavouritesPageComponent } from "./pages/favourites-page/favourites-page
     HeaderComponent,
     MovieComponent,
     FavouritesPageComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
