@@ -1,3 +1,5 @@
+@use "../../../styles/partials/variables";
+
 .movies {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
@@ -20,4 +22,26 @@
 .info-span {
   font-style: italic;
   text-align: center;
+}
+
+.filter-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  &__button {
+    background-color: variables.$accent-color;
+    color: #fff;
+    border-radius: 6px;
+    padding: 6px 4px;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+    }
+  }
 }
