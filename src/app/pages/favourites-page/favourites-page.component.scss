@@ -34,7 +34,8 @@
     background-color: variables.$accent-color;
     color: #fff;
     border-radius: 6px;
-    padding: 6px 4px;
+    padding: 6px;
+    font-weight: bold;
 
     &:hover {
       opacity: 0.8;
@@ -44,4 +45,27 @@
       opacity: 0.4;
     }
   }
+}
+
+.reset {
+  background-color: variables.$grey-color;
+  width: fit-content;
+  padding: 6px;
+  border-radius: 6px;
+  font-weight: bold;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+  }
+}
+
+.form-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }

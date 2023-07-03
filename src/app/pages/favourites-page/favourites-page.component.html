@@ -1,21 +1,23 @@
 <main class="main-content">
-
-  <form (ngSubmit)="filterMovies(types, year)" class="filter-form">
-    <mat-form-field>
-      <mat-label>Types</mat-label>
-      <mat-select [formControl]="types" multiple>
-        <mat-option *ngFor="let type of typesList" [disabled]="favouriteMovies.length === 0"
-          [value]="type">{{type}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Year</mat-label>
-      <input matInput [(ngModel)]="year" name="year" type="number">
-    </mat-form-field>
-    <button type="submit" [disabled]="(types.value?.length === 0 && !year) || favouriteMovies.length === 0"
-      class="filter-form__button">Filter</button>
-  </form>
-  <button (click)="resetFilters()">Reset filters</button>
+  <div class="form-layout">
+    <button (click)="resetFilters()" class="reset" [disabled]="(types.value?.length === 0 && !year)">Reset
+      filters</button>
+    <form (ngSubmit)="filterMovies(types, year)" class="filter-form">
+      <mat-form-field>
+        <mat-label>Types</mat-label>
+        <mat-select [formControl]="types" multiple>
+          <mat-option *ngFor="let type of typesList" [disabled]="favouriteMovies.length === 0"
+            [value]="type">{{type}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Year</mat-label>
+        <input matInput [(ngModel)]="year" name="year" type="number">
+      </mat-form-field>
+      <button type="submit" [disabled]="(types.value?.length === 0 && !year) || favouriteMovies.length === 0"
+        class="filter-form__button">Filter</button>
+    </form>
+  </div>
 
   <span *ngIf="favouriteMovies.length === 0" class="info-span">No favourite movies added</span>
   <span *ngIf="filteredMessage" class="info-span">{{filteredMessage}}</span>
