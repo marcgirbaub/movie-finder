@@ -11,6 +11,7 @@ import { type FavouriteMovies } from "src/app/store/movies/types";
 export class MoviesTableComponent {
   @Input() movies: Movies;
   @Input() isLoading: boolean;
+  @Input() error: string;
   favouriteMovies: FavouriteMovies;
   displayedColumns: string[] = ["poster", "title", "year", "type", "fav"];
 
