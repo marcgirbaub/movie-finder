@@ -1,7 +1,8 @@
 <main class="main-content">
   <div class="form-layout">
-    <button (click)="resetFilters()" class="reset" [disabled]="(types.value?.length === 0 && !year)">Reset
-      filters</button>
+    <button (click)="resetFilters()" class="reset" [disabled]="types.value?.length === 0 && !year && !filteredMessage">
+      Reset filters
+    </button>
     <form (ngSubmit)="filterMovies(types, year)" class="filter-form">
       <mat-form-field>
         <mat-label>Types</mat-label>
@@ -18,14 +19,11 @@
         class="filter-form__button">Filter</button>
     </form>
   </div>
-
   <span *ngIf="favouriteMovies.length === 0" class="info-span">No favourite movies added</span>
   <span *ngIf="filteredMessage" class="info-span">{{filteredMessage}}</span>
-
   <ul class="movies" *ngIf="favouriteMovies.length > 0 && filteredMovies.length === 0 && !filteredMessage">
     <li *ngFor="let movie of favouriteMovies"><app-movie [movie]="movie"></app-movie></li>
   </ul>
-
   <ul class="movies" *ngIf="filteredMovies.length > 0 && !filteredMessage">
     <li *ngFor="let movie of filteredMovies"><app-movie [movie]="movie"></app-movie></li>
   </ul>

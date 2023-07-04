@@ -2,8 +2,9 @@
   <table mat-table [dataSource]="movies" class="mat-elevation-z8 table">
     <ng-container matColumnDef="poster">
       <th mat-header-cell *matHeaderCellDef class="table__title table__title--center"> Poster </th>
-      <td mat-cell *matCellDef="let movie" class="table__result table__result--center"><img src="{{movie.poster}}"
-          width="150" height="222" class="table__result-image" alt="{{movie.title}} poster"> </td>
+      <td mat-cell *matCellDef="let movie" class="table__result table__result--center">
+        <img src="{{movie.poster}}" width="150" height="222" class="table__result-image" alt="{{movie.title}} poster">
+      </td>
     </ng-container>
     <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef class="table__title"> Title </th>
@@ -20,12 +21,16 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="fav">
-      <th mat-header-cell *matHeaderCellDef class="table__title table__title--center"> </th>
+      <th mat-header-cell *matHeaderCellDef class="table__title table__title--center"></th>
       <td mat-cell *matCellDef="let movie" class="table__result table__result--center">
-        <button *ngIf="!checkIfMovieIsFavourite(movie)" class="fav__button" (click)="addToFavourites(movie)"><mat-icon
-            class="fav__icon">favorite_border</mat-icon></button>
-        <button *ngIf="checkIfMovieIsFavourite(movie)" class="fav__button"
-          (click)="deleteFromFavourites(movie.imdbID)"><mat-icon class="fav__icon">favorite</mat-icon></button>
+        <button *ngIf="!checkIfMovieIsFavourite(movie)" class="fav__button" (click)="addToFavourites(movie)">
+          <mat-icon class="fav__icon">
+            favorite_border
+          </mat-icon></button>
+        <button *ngIf="checkIfMovieIsFavourite(movie)" class="fav__button" (click)="deleteFromFavourites(movie.imdbID)">
+          <mat-icon class="fav__icon">
+            favorite
+          </mat-icon></button>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table__titles"></tr>
