@@ -46,6 +46,7 @@ export class HomePageComponent {
 
   clearSearch(): void {
     this.searchValue = "";
+    this.error = "";
     this.movies = {
       totalResults: "",
       response: "",
