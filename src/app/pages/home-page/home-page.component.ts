@@ -43,4 +43,13 @@ export class HomePageComponent {
       },
     });
   }
+
+  clearSearch(): void {
+    this.searchValue = "";
+    this.movies = {
+      totalResults: "",
+      response: "",
+      search: [],
+    };
+  }
 }
