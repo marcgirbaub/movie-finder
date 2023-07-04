@@ -5,7 +5,7 @@
   grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
   gap: 40px;
 
-  @media (max-width: 600px) {
+  @media (max-width: 685px) {
     display: flex;
     flex-direction: column;
     gap: 40px;
