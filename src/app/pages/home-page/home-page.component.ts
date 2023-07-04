@@ -12,6 +12,7 @@ export class HomePageComponent {
   searchValue: string;
   movies$: Observable<ParsedMoviesApiResponse>;
   isLoading = false;
+  error: string;
   movies: ParsedMoviesApiResponse = {
     totalResults: "",
     response: "",
@@ -24,11 +25,22 @@ export class HomePageComponent {
 
   searchMovies(title: string): void {
     this.isLoading = true;
+    this.error = "";
     this.movies$ = this.moviesService.searchMovies(title);
 
-    this.movies$.subscribe((data) => {
-      this.movies = data;
-      this.isLoading = false;
+    this.movies$.subscribe({
+      next: (data) => {
+        this.movies = data;
+        this.isLoading = false;
+        if (data.error) {
+          this.error = data.error;
+        }
+      },
+      error: () => {
+        this.movies = { totalResults: "", response: "", search: [] };
+        this.isLoading = false;
+        this.error = "There was an error with your search. Please try again!";
+      },
     });
   }
 }
