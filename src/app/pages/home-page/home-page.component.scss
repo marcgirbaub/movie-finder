@@ -43,3 +43,24 @@
     font-size: 1.5rem;
   }
 }
+
+.clear-button {
+  background-color: variables.$grey-color;
+  width: fit-content;
+  margin-left: 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  padding: 6px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+  }
+
+  @media (max-width: 700px) {
+    display: none;
+  }
+}

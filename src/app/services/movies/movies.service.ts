@@ -84,7 +84,7 @@ export class MoviesService {
         type: movie.Type,
         poster:
           movie.Poster === "N/A"
-            ? "https://womens-southerngolfassociation.org/wp-content/uploads/2021/10/Image-Not-Available.png"
+            ? "../../../assets/images/image-not-found.png"
             : movie.Poster,
       };
 
