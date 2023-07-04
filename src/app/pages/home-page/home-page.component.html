@@ -5,6 +5,10 @@
     <button class="search-form__button" type="submit" [disabled]="!searchValue">
       <mat-icon class="search-form__icon" fontIcon="search"></mat-icon>
     </button>
+    <button (click)="clearSearch()" [disabled]="!searchValue || movies.search.length === 0" class="clear-button">
+      Clear
+    </button>
   </form>
+
   <app-movies-table [movies]="movies.search" [isLoading]="isLoading" [error]="error"></app-movies-table>
 </main>
