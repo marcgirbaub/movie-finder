@@ -17,13 +17,15 @@ export interface ApiMovie {
 }
 
 export interface MoviesApiResponse {
-  totalResults: string;
+  totalResults?: string;
   Response: string;
   Search: ApiMovie[];
+  Error?: string;
 }
 
 export interface ParsedMoviesApiResponse {
-  totalResults: string;
+  totalResults?: string;
   response: string;
   search: Movies;
+  error?: string;
 }

@@ -37,11 +37,21 @@ export class MoviesService {
         params: { apikey, s: title },
       })
       .pipe(
-        map(({ Response, Search, totalResults }) => ({
-          search: this.convertPropertiesToLowercase(Search),
-          response: Response,
-          totalResults,
-        }))
+        map(({ Response, Search, totalResults, Error }) => {
+          if (Response === "False") {
+            return {
+              search: [],
+              response: Response,
+              error: Error,
+            };
+          }
+
+          return {
+            search: this.convertPropertiesToLowercase(Search),
+            response: Response,
+            totalResults,
+          };
+        })
       );
 
     return movies$;
