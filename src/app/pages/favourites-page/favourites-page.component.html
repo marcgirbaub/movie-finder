@@ -1,7 +1,7 @@
 <main class="main-content">
   <div class="form-layout">
     <button (click)="resetFilters()" class="reset" [disabled]="types.value?.length === 0 && !year && !filteredMessage">
-      Reset filters
+      Reset
     </button>
     <form (ngSubmit)="filterMovies(types, year)" class="filter-form">
       <mat-form-field>
