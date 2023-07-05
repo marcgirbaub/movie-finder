@@ -19,14 +19,18 @@ export class HomePageComponent {
     search: [],
   };
 
+  types = ["movie", "series", "game"];
+  type: string;
+  year: number | undefined;
+
   constructor(
     @Inject(MoviesService) private readonly moviesService: MoviesService
   ) {}
 
-  searchMovies(title: string): void {
+  searchMovies(title: string, type?: string, year?: number): void {
     this.isLoading = true;
     this.error = "";
-    this.movies$ = this.moviesService.searchMovies(title);
+    this.movies$ = this.moviesService.searchMovies(title, type, year);
 
     this.movies$.subscribe({
       next: (data) => {
@@ -46,7 +50,9 @@ export class HomePageComponent {
 
   clearSearch(): void {
     this.searchValue = "";
+    this.year = undefined;
     this.error = "";
+    this.type = "";
     this.movies = {
       totalResults: "",
       response: "",

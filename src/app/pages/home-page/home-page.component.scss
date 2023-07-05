@@ -11,6 +11,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  align-self: center;
+
+  &__main-container {
+    display: flex;
+  }
 
   &__input {
     padding: 5px 10px;
@@ -20,7 +27,11 @@
     position: relative;
     height: 40px;
     min-width: 200px;
-    width: 400px;
+    width: 380px;
+
+    @media (max-width: 700px) {
+      width: 220px;
+    }
 
     &:focus {
       outline: 1.5px solid variables.$accent-color;
@@ -42,6 +53,15 @@
   &__icon {
     font-size: 1.5rem;
   }
+
+  &__advanced {
+    display: flex;
+    gap: 14px;
+
+    @media (max-width: 700px) {
+      flex-direction: column;
+    }
+  }
 }
 
 .clear-button {
@@ -53,7 +73,7 @@
   padding: 6px;
 
   &:hover {
-    opacity: 0.8;
+    background-color: variables.$red-button-color;
   }
 
   &:disabled {

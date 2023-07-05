@@ -31,10 +31,14 @@ export class MoviesService {
     @Inject(Store) private readonly store: Store
   ) {}
 
-  searchMovies(title: string): Observable<ParsedMoviesApiResponse> {
+  searchMovies(
+    title: string,
+    type?: string,
+    year?: number
+  ): Observable<ParsedMoviesApiResponse> {
     const movies$ = this.http
       .get<MoviesApiResponse>(this.moviesUrl, {
-        params: { apikey, s: title },
+        params: { apikey, s: title, type: type ?? "", y: year ?? "" },
       })
       .pipe(
         map(({ Response, Search, totalResults, Error }) => {

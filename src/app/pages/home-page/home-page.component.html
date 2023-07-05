@@ -1,13 +1,38 @@
 <main class="main-content">
-  <form class="search-form" (ngSubmit)="searchMovies(searchValue)">
-    <input class="search-form__input" [(ngModel)]="searchValue" name="searchValue" placeholder="Search" type="search"
-      autocapitalize="off" maxlength="70">
-    <button class="search-form__button" type="submit" [disabled]="!searchValue">
-      <mat-icon class="search-form__icon" fontIcon="search"></mat-icon>
-    </button>
-    <button (click)="clearSearch()" [disabled]="movies.search.length === 0 && !error" class="clear-button">
-      Clear
-    </button>
+  <form class="search-form" (ngSubmit)="searchMovies(searchValue, type, year)">
+    <div class="search-form__main-container">
+      <input class="search-form__input" [(ngModel)]="searchValue" name="searchValue" placeholder="Search" type="search"
+        autocapitalize="off" maxlength="70">
+      <button class="search-form__button" type="submit" [disabled]="!searchValue">
+        <mat-icon class="search-form__icon" fontIcon="search"></mat-icon>
+      </button>
+      <button (click)="clearSearch()" [disabled]="movies.search.length === 0 && !error" class="clear-button">
+        Clear
+      </button>
+    </div>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Advanced search options
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="search-form__advanced">
+          <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select [(value)]="type">
+              <mat-option *ngFor="let type of types" [value]="type">
+                {{type}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Year</mat-label>
+            <input matInput [(ngModel)]="year" name="year" type="number">
+          </mat-form-field>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
   </form>
   <app-movies-table [movies]="movies.search" [isLoading]="isLoading" [error]="error"></app-movies-table>
 </main>
