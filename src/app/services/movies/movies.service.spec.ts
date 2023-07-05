@@ -36,7 +36,7 @@ describe("Given a Movies Service", () => {
     test("Then it should make a GET request to the search endpoint when subscribing to this method", () => {
       moviesService.searchMovies(searchTitle).subscribe();
       const req = httpMock.expectOne(
-        `${moviesService.moviesUrl}?apikey=${apikey}&s=${searchTitle}`
+        `${moviesService.moviesUrl}?apikey=${apikey}&s=${searchTitle}&type=&y=`
       );
 
       expect(req.request.method).toEqual("GET");
