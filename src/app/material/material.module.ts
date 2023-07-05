@@ -7,6 +7,7 @@ import { MatTableModule } from "@angular/material/table";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatSelectModule } from "@angular/material/select";
+import { MatExpansionModule } from "@angular/material/expansion";
 
 @NgModule({
   exports: [
@@ -18,6 +19,7 @@ import { MatSelectModule } from "@angular/material/select";
     MatProgressSpinnerModule,
     MatDialogModule,
     MatSelectModule,
+    MatExpansionModule,
   ],
 })
 export class MaterialModule {}
