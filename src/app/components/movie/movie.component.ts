@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from "@angular/core";
+import { Component, EventEmitter, Inject, Input, Output } from "@angular/core";
 import { type FavMovie } from "../../store/movies/types";
 import { MoviesService } from "../../services/movies/movies.service";
 import { MatDialog } from "@angular/material/dialog";
@@ -11,15 +11,13 @@ import { DialogComponent } from "../dialog/dialog.component";
 })
 export class MovieComponent {
   @Input() movie: FavMovie;
+  @Output() deleteFromFavourites: EventEmitter<string> =
+    new EventEmitter<string>();
 
   constructor(
     @Inject(MoviesService) private readonly moviesService: MoviesService,
     @Inject(MatDialog) public dialog: MatDialog
   ) {}
-
-  deleteFromFavourites(): void {
-    this.moviesService.deleteFromFavourites(this.movie.imdbID);
-  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
@@ -28,5 +26,9 @@ export class MovieComponent {
     dialogRef.afterClosed().subscribe((description: string) => {
       this.moviesService.modifyDescription(this.movie.imdbID, description);
     });
+  }
+
+  deleteMovie(id: string): void {
+    this.deleteFromFavourites.emit(id);
   }
 }
