@@ -71,6 +71,14 @@ export class FavouritesPageComponent {
     this.filteredMovies = filteredMovies;
   }
 
+  deleteFromFavourites(id: string): void {
+    this.moviesService.deleteFromFavourites(id);
+
+    if (this.year || this.types.value) {
+      this.filterMovies(this.types, this.year);
+    }
+  }
+
   resetFilters(): void {
     this.filteredMessage = "";
     this.filteredMovies = [];

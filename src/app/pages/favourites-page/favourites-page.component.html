@@ -20,11 +20,15 @@
     </form>
   </div>
   <span *ngIf="favouriteMovies.length === 0" class="info-span">No favourite movies added</span>
-  <span *ngIf="filteredMessage" class="info-span">{{filteredMessage}}</span>
+  <span *ngIf="filteredMessage && favouriteMovies.length !== 0" class="info-span">{{filteredMessage}}</span>
   <ul class="movies" *ngIf="favouriteMovies.length > 0 && filteredMovies.length === 0 && !filteredMessage">
-    <li *ngFor="let movie of favouriteMovies"><app-movie [movie]="movie"></app-movie></li>
+    <li *ngFor="let movie of favouriteMovies">
+      <app-movie [movie]="movie" (deleteFromFavourites)="deleteFromFavourites($event)"></app-movie>
+    </li>
   </ul>
   <ul class="movies" *ngIf="filteredMovies.length > 0 && !filteredMessage">
-    <li *ngFor="let movie of filteredMovies"><app-movie [movie]="movie"></app-movie></li>
+    <li *ngFor="let movie of filteredMovies">
+      <app-movie [movie]="movie" (deleteFromFavourites)="deleteFromFavourites($event)"></app-movie>
+    </li>
   </ul>
 </main>

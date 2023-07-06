@@ -36,6 +36,7 @@ module.exports = {
           "Injectable",
           "Inject",
           "Input",
+          "Output",
         ],
       },
     ],
